@@ -3,33 +3,21 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar";
 import Home from "./pages";
-import FoodTracker from "./pages/food-tracker";
-import HealthTracker from "./pages/health-tracker";
-import SubstanceQuitter from "./pages/substance-quitter";
+// import FoodTracker from "./pages/food-tracker";
+// import HealthTracker from "./pages/health-tracker";
+// import SubstanceQuitter from "./pages/substance-quitter";
 
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "./firebase-config";
-import CreateUserButton from "./components/test/CreateUserButton";
 import UserDisplayer from "./components/test/UserDisplayer";
+import CreateUserButton from "./components/test/CreateUserButton";
+import { fetchUsers, User } from "./components/test/User";
 
 const App: React.FC = () => {
-
-    interface User {
-        name: string;
-        age: number;
-        id: string;
-    }
-
     const [users, setUsers] = useState<User[]>([]);
-    const usersCollectionRef = collection(db, "users");
 
     useEffect(() => {
         const getUsers = async () => {
-            const data = await getDocs(usersCollectionRef);
-            setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id} as User)));
-
+            setUsers(await fetchUsers());
         };
-
         getUsers();
     }, []);
 
@@ -37,7 +25,7 @@ const App: React.FC = () => {
         <>
             <Router>
                 <NavigationBar />
-                <Routes>
+                {/* <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/food-tracker" element={<FoodTracker />} />
                     <Route path="/health-tracker" element={<HealthTracker />} />
@@ -45,11 +33,10 @@ const App: React.FC = () => {
                         path="/substance-quitter"
                         element={<SubstanceQuitter />}
                     />
-                </Routes>
+                </Routes> */}
             </Router>
-
-            <UserDisplayer />
             <CreateUserButton />
+            <UserDisplayer users={users} />
         </>
     );
 };
