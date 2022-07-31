@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FoodTracker = () => {
+const SubstanceQuitter = () => {
   return (
     <div style = {{
         display: 'flex', 
@@ -10,11 +10,11 @@ const FoodTracker = () => {
         }}
     >
         <h1>
-            Food Tracker
+            Substance Quitter
         </h1>
         
     </div>
   )
 }
 
-export default FoodTracker; 
+export default SubstanceQuitter; 
