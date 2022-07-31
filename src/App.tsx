@@ -7,8 +7,9 @@ const App: React.FC = () => {
   
   return (
     <Router>
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <h1>Project Baymax</h1>
+      
     </Router>
   );
 }
