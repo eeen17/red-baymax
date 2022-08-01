@@ -40,7 +40,7 @@ const HealthTracker = () => {
                     <label>Weight (lbs): </label>
                     <input
                         placeholder="input weight here"
-                        type="number"
+                        type="number" // can only input numbers
                         onChange={(e) => {
                             setWeightOn(e);
                         }}
@@ -50,7 +50,7 @@ const HealthTracker = () => {
                     <label>Height (in): </label>
                     <input
                         placeholder="input height here"
-                        type="number"
+                        type="number" // can only input numbers
                         onChange={(e) => {
                             setHeightOn(e);
                         }}
@@ -60,9 +60,7 @@ const HealthTracker = () => {
                     <button
                         className="button"
                         type="submit"
-                        onClick={() => {
-                            submitBMI();
-                        }}
+                        onClick={submitBMI} // if method doesn't have parameters, can be inserted like this
                     >
                         Submit
                     </button>
