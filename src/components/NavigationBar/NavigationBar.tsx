@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink} from './NavigationBarElements'
+import {Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink1, NavBtnLink2} from './NavigationBarElements'
 
 const NavigationBar = () => {
     return (
@@ -21,8 +21,8 @@ const NavigationBar = () => {
                     </NavLink>
                 </NavMenu>
                 <NavBtn>
-                    <NavBtnLink to="/sign-in">Sign In</NavBtnLink>
-                    <NavBtnLink to="/sign-up">Sign up</NavBtnLink>
+                    <NavBtnLink2 to="/sign-in">Login</NavBtnLink2>
+                    <NavBtnLink1 to="/sign-up">Create Account</NavBtnLink1>
                 </NavBtn>
             </Nav>
         </>
