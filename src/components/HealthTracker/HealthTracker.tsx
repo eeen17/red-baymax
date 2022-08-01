@@ -6,20 +6,22 @@ const HealthTracker = () => {
     const [height, setHeight] = useState(0);
     const [bmi, setBMI] = useState(0);
 
-    function setHeightOn(e: Event | undefined) {
-        if (e != undefined && e.target != null) {
-            console.log(e.target);
-            setHeight(e.target.value);
-        }
-    }
-    function setWeightOn(e: Event) {
+    function setHeightOn(e: React.ChangeEvent<HTMLInputElement>) {
         console.log(e.target);
-        setWeight(e.target.value);
+        setHeight(parseFloat(e.target.value));
     }
-    if (weight === 0 || height === 0) {
-        alert("Please enter weight and height");
-    } else {
-        let bmi = (weight / (height * height)) * 703;
+
+    function setWeightOn(e: React.ChangeEvent<HTMLInputElement>) {
+        console.log(e.target);
+        setWeight(parseFloat(e.target.value));
+    }
+
+    function submitBMI() {
+        if (weight === 0 || height === 0) {
+            alert("Please enter weight and height");
+        } else {
+            setBMI((weight / (height * height)) * 703);
+        }
     }
 
     return (
@@ -27,23 +29,32 @@ const HealthTracker = () => {
             <h2 className="top">BMI Calculator</h2>
             <form>
                 <div>
-                    <label>Weight (lbs)</label>
+                    <label>Weight (lbs): </label>
                     <input
-                        value={weight}
-                        onChange={(e = () => setHeightOn(e.target.value))}
+                        placeholder="input weight here"
+                        type="number"
+                        onChange={(e) => {
+                            setWeightOn(e);
+                        }}
                     ></input>
                 </div>
                 <div>
-                    <label>Height (in)</label>
-                    <input value={height}></input>
+                    <label>Height (in): </label>
+                    <input
+                        placeholder="input height here"
+                        type="number"
+                        onChange={(e) => {
+                            setHeightOn(e);
+                        }}
+                    ></input>
                 </div>
                 <div>
-                    <button className="btn" type="submit">
+                    <button className="btn" type="submit" onSubmit={submitBMI}>
                         Submit
                     </button>
-                    <button className="btn btn-outline" type="submit">
+                    {/* <button className="btn btn-outline" type="submit">
                         Submit
-                    </button>
+                    </button> */}
                 </div>
             </form>
             <div className="center">
