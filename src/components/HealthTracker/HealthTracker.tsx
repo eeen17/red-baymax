@@ -7,27 +7,35 @@ const HealthTracker = () => {
     const [bmi, setBMI] = useState(0);
 
     function setHeightOn(e: React.ChangeEvent<HTMLInputElement>) {
-        console.log(e.target);
+        console.log(e.target.value);
         setHeight(parseFloat(e.target.value));
     }
 
     function setWeightOn(e: React.ChangeEvent<HTMLInputElement>) {
-        console.log(e.target);
+        console.log(e.target.value);
         setWeight(parseFloat(e.target.value));
     }
 
     function submitBMI() {
+        // console.log("submitted");
+
         if (weight === 0 || height === 0) {
             alert("Please enter weight and height");
         } else {
             setBMI((weight / (height * height)) * 703);
+            // console.log(bmi);
         }
     }
 
     return (
         <>
-            <h2 className="top">BMI Calculator</h2>
-            <form>
+            <form
+                id="BMI Calculator"
+                onSubmit={(e) => {
+                    e.preventDefault(); // stops page from reloading everytime you submit to see what the BMI is
+                }}
+            >
+                <h2 className="top">BMI Calculator</h2>
                 <div>
                     <label>Weight (lbs): </label>
                     <input
@@ -48,8 +56,14 @@ const HealthTracker = () => {
                         }}
                     ></input>
                 </div>
-                <div>
-                    <button className="btn" type="submit" onSubmit={submitBMI}>
+                <div className="SubmitButton">
+                    <button
+                        className="button"
+                        type="submit"
+                        onClick={() => {
+                            submitBMI();
+                        }}
+                    >
                         Submit
                     </button>
                     {/* <button className="btn btn-outline" type="submit">
