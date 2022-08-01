@@ -1,20 +1,10 @@
 import React from 'react'
+import FoodTracker from '../components/FoodTracker/FoodTracker'
 
-const FoodTracker = () => {
-  return (
-    <div style = {{
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: '90vh'
-        }}
-    >
-        <h1>
-            Food Tracker
-        </h1>
-        
+export default function foodtracker() {
+  return(
+    <div>
+      <FoodTracker/>
     </div>
   )
 }
-
-export default FoodTracker; 

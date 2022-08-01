@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import NavigationBar from './components/NavigationBar';
 import Home from './pages';
 import FoodTracker from './pages/food-tracker';
 import HealthTracker from './pages/health-tracker';
 import SubstanceQuitter from './pages/substance-quitter';
+import NavigationBar from './components/NavigationBar/NavigationBar';
 
 const App: React.FC = () => {
   

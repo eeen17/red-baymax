@@ -1,20 +1,11 @@
-import React from 'react'
+import React from "react";
+import Home from "../components/FoodTracker/Home/Home";
 
-const Home = () => {
-  return (
-    <div style = {{
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: '90vh'
-        }}
-    >
-        <h1>
-            Project Baymax
-        </h1>
-        
-    </div>
-  )
-}
+export default function index() {
+    return (
+        <div>
+            <Home />
+        </div>
+    );
+};
 
-export default Home; 
